@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad4d22ab-ab73-446e-826e-6ceef0ae6796" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercise7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise7.java" afterDir="false" />
-    </list>
+    <list default="true" id="ad4d22ab-ab73-446e-826e-6ceef0ae6796" name="Changes" comment="Initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +56,7 @@
       <workItem from="1669488067590" duration="11004000" />
       <workItem from="1669536874592" duration="15361000" />
       <workItem from="1669565908393" duration="5611000" />
+      <workItem from="1669572530402" duration="389000" />
     </task>
     <servers />
   </component>
