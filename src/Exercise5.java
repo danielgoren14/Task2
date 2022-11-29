@@ -2,41 +2,45 @@ import javax.sound.sampled.FloatControl;
 import javax.swing.text.html.HTMLDocument;
 import java.util.Scanner;
 
-public class Exercise5 {
-    public static void main(String[] args) {\
-        Scanner scanner = new Scanner(System.in);
-        char[] array = new char[9];
+/*public class Exercise5 {
+    public static void main(String[] args) {
+        //Scanner scanner = new Scanner(System.in);
+        /*char[] array = new char[9];
         char symbol = 'X';
         int counter = 1;
         boolean ifWin;
-        int location;
-        for (int i = 1; i < ; i++) {
+        int location;*/
 
+        /*for (int i = 1; i <; i++) {
+
+            placeSymbolOnBoard()
         }
-        for (int i = 1; i <=9; i++) {
-            System.out.println("Please enter a number");
-            location = getPositionFromUser();
-            if(i % 2 == 1){
+        for (int i = 1; i <= 9; i++) {
 
-            }else{
+            //System.out.println("Please enter a number");
+            //location = getPositionFromUser();
+            if (i % 2 == 1) {
+
+            } else {
 
             }
             counter++;
-            if(counter % 2 == 1){
+            if (counter % 2 == 1) {
                 symbol = 'X';
-            }else{
+            } else {
                 symbol = 'O';
             }
         }
         printBoard(array);
 
         for (int i = 1; i <= 9; i++) {
-            if(i % 2 == 1){
+            if (i % 2 == 1) {
 
-                placeSymbolOnBoard(array,)
+                placeSymbolOnBoard(array, )
             }
 
         }
+    }*/
 
 
         //printBoard(array);
@@ -55,7 +59,7 @@ public class Exercise5 {
                     break;
                 }
             }
-        }*/
+        }
     }
     public static char[] printBoard(char[] array){
         for (int i = 1; i <= 9; i += 3) {
@@ -74,8 +78,7 @@ public class Exercise5 {
         }
         return ifAlreadyChosen;
     }
-    public static int getPositionFromUser() {
-        char[] array = new char[9];
+    public static int getPositionFromUser(char[] array) {
         Scanner scanner = new Scanner(System.in);
         int location;
         do {
@@ -292,4 +295,4 @@ public class Exercise5 {
         }
         return finalCheck;
     }
-}
+}*/
