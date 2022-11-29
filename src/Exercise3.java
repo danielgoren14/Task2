@@ -1,6 +1,4 @@
-import java.util.Random;
 import java.util.Scanner;
-
 public class Exercise3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -16,7 +14,6 @@ public class Exercise3 {
     }
     public static int[] printWithoutDuplications(int[] array){
         int counter =0;
-        // 1,2,3,2,1
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 if(array[i] == array[j]){
@@ -25,13 +22,11 @@ public class Exercise3 {
                 }
             }
         }
-        //System.out.println("array.length is : " + array.length + " and counter is " + counter);
         int [] newArray = new int[array.length - counter];
         int indexNewArray = 0;
-        int counterOfCheckingIfTheNumberAppearsFirst;
-        for (int i = 1; i <array.length; i++) {
-            counterOfCheckingIfTheNumberAppearsFirst = 0;
-            for (int j = i-1; j >0; j--) {
+        int counterOfCheckingIfTheNumberAppearsFirst = 0;
+        for (int i = 0; i <array.length; i++) {
+            for (int j = i-1; j >= 0; j--) {
                 if(array[i] != array[j]){
                     counterOfCheckingIfTheNumberAppearsFirst++;
                 }else{
@@ -43,8 +38,8 @@ public class Exercise3 {
                 newArray[indexNewArray] = array[i];
                 indexNewArray++;
             }
+            counterOfCheckingIfTheNumberAppearsFirst = 0;
         }
         return newArray;
     }
-    //5,5,5,1,5
 }

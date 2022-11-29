@@ -1,16 +1,47 @@
+import javax.sound.sampled.FloatControl;
+import javax.swing.text.html.HTMLDocument;
 import java.util.Scanner;
 
 public class Exercise5 {
-    public static void main(String[] args) {
-        //Scanner scanner = new Scanner(System.in);
-        boolean ifWin;
+    public static void main(String[] args) {\
+        Scanner scanner = new Scanner(System.in);
         char[] array = new char[9];
-        char user1Symbol = 'X';
-        char user2Symbol = 'O';
-        printBoard(array);
+        char symbol = 'X';
+        int counter = 1;
+        boolean ifWin;
         int location;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 1; i < ; i++) {
+
+        }
+        for (int i = 1; i <=9; i++) {
+            System.out.println("Please enter a number");
             location = getPositionFromUser();
+            if(i % 2 == 1){
+
+            }else{
+
+            }
+            counter++;
+            if(counter % 2 == 1){
+                symbol = 'X';
+            }else{
+                symbol = 'O';
+            }
+        }
+        printBoard(array);
+
+        for (int i = 1; i <= 9; i++) {
+            if(i % 2 == 1){
+
+                placeSymbolOnBoard(array,)
+            }
+
+        }
+
+
+        //printBoard(array);
+
+        /*for (int i = 0; i < 9; i++) {
             if(i % 2 == 0){
                 ifWin = placeSymbolOnBoard(array,location,user1Symbol);
                 if(ifWin == true){
@@ -24,15 +55,17 @@ public class Exercise5 {
                     break;
                 }
             }
-        }
+        }*/
     }
-    public static void printBoard(char[] array){
+    public static char[] printBoard(char[] array){
         for (int i = 1; i <= 9; i += 3) {
             for (int j = i; j <= i+2; j++) {
+                array[j] = placeSymbolOnBoard();
                 System.out.print(j+" ");
             }
             System.out.println(" ");
         }
+        return array;
     }
     public static boolean isAvailable(char[] array, int location){
         boolean ifAlreadyChosen = true;
@@ -41,8 +74,8 @@ public class Exercise5 {
         }
         return ifAlreadyChosen;
     }
-    public static int getPositionFromUser(){
-        char[] array= new char[9];
+    public static int getPositionFromUser() {
+        char[] array = new char[9];
         Scanner scanner = new Scanner(System.in);
         int location;
         do {
@@ -50,12 +83,12 @@ public class Exercise5 {
             location = scanner.nextInt();
         }while (location < 1 || location > 9);
         boolean ifAlreadyTaken = isAvailable(array,location);
-        if(ifAlreadyTaken == false){
+        if(ifAlreadyTaken == false) {
             do {
-                System.out.println("Please enter another number between 1 to 9, except of "+ location);
+                System.out.println("Please enter another number between 1 to 9, except of " + location);
                 location = scanner.nextInt();
-                ifAlreadyTaken = isAvailable(array,location);
-            }while(ifAlreadyTaken == false);
+                ifAlreadyTaken = isAvailable(array, location);
+            } while (ifAlreadyTaken == false);
         }
         return location;
     }
@@ -224,9 +257,10 @@ public class Exercise5 {
     }
     public static boolean placeSymbolOnBoard(char[] array, int location, char symbol){
         char ifSomeoneWin;
+        getPositionFromUser(array,location);
         if(symbol == 'X'){
             array[location] = symbol;
-            for (int i = 1; i <= 9; i += 3) {
+            for (int i = 1; i <= 3; i ++) {
                 for (int j = i; j <= i+2; j++) {
                     if (array[location] == i) {
                         System.out.print(symbol);
@@ -238,9 +272,9 @@ public class Exercise5 {
             }
         }else{
             array[location] = symbol;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if(array[location] == i){
+            for (int i = 1; i <= 9; i+=3) {
+                for (int j = i; j <= i+2; j++) {
+                    if(array[location] == j){
                         System.out.print(symbol);
                     }else {
                         System.out.print(array[i] + " ");
