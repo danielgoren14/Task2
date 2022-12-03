@@ -1,29 +1,24 @@
 public class Exercise2 {
-    public static void main(String[] args) {
-        String myPhoneNumber = "972526990440";
-        System.out.println(phoneNumber(myPhoneNumber));
-    }
-
-    public static String phoneNumber(String userPhoneNumber) {
-        String rightTemplate = "012-3456789";
-        char numberToChange = userPhoneNumber.charAt(2);
-        char charZero = '0';
-        if (userPhoneNumber.startsWith("972") && userPhoneNumber.length() == rightTemplate.length() + 1) {
-            userPhoneNumber = userPhoneNumber.replace(numberToChange ,charZero);
-            rightTemplate = userPhoneNumber.substring(0, 1);
-            rightTemplate += "-" + userPhoneNumber.substring(3, 9);
-        } else {
-            if (userPhoneNumber.length() == 10 && userPhoneNumber.startsWith("05")) {
-                rightTemplate = userPhoneNumber.substring(0, 3);
-                rightTemplate += "-" + userPhoneNumber.substring(3, 10);
-            } else {
-                if (userPhoneNumber.length() == 11 && userPhoneNumber.contains("-") && userPhoneNumber.startsWith("05")) {
-                    rightTemplate = userPhoneNumber;
-                } else {
-                    rightTemplate = "";
-                }
-            }
+    public static String phoneNumber(String phoneNumber){
+        String firstNumbers;
+        String lastNumbers;
+        String israeliPrefix = "9725";
+        String phoneAreaCode = "05";
+        if(phoneNumber.length()==10 && phoneNumber.substring(0,2).contains(phoneAreaCode)){
+            firstNumbers = phoneNumber.substring(0,3);
+            lastNumbers = phoneNumber.substring(3);
+            phoneNumber =firstNumbers+"-"+lastNumbers;
         }
-        return rightTemplate;
+        else if(phoneNumber.length()==11 && phoneNumber.charAt(3)=='-'){
+        }
+        else if(phoneNumber.length()==12 && phoneNumber.substring(0,6).contains(israeliPrefix)){
+            firstNumbers = 0 + phoneNumber.substring(3,5);
+            lastNumbers = phoneNumber.substring(5);
+            phoneNumber = firstNumbers+"-"+lastNumbers;
+        }
+        else{
+            phoneNumber ="";
+        }
+        return phoneNumber;
     }
 }

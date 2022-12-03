@@ -1,298 +1,88 @@
-import javax.sound.sampled.FloatControl;
-import javax.swing.text.html.HTMLDocument;
 import java.util.Scanner;
 
-/*public class Exercise5 {
+public class Exercise5 {
     public static void main(String[] args) {
-        //Scanner scanner = new Scanner(System.in);
-        /*char[] array = new char[9];
-        char symbol = 'X';
-        int counter = 1;
-        boolean ifWin;
-        int location;*/
-
-        /*for (int i = 1; i <; i++) {
-
-            placeSymbolOnBoard()
-        }
-        for (int i = 1; i <= 9; i++) {
-
-            //System.out.println("Please enter a number");
-            //location = getPositionFromUser();
-            if (i % 2 == 1) {
-
-            } else {
-
-            }
-            counter++;
-            if (counter % 2 == 1) {
-                symbol = 'X';
-            } else {
-                symbol = 'O';
-            }
-        }
-        printBoard(array);
-
-        for (int i = 1; i <= 9; i++) {
-            if (i % 2 == 1) {
-
-                placeSymbolOnBoard(array, )
-            }
-
-        }
-    }*/
-
-
-        //printBoard(array);
-
-        /*for (int i = 0; i < 9; i++) {
-            if(i % 2 == 0){
-                ifWin = placeSymbolOnBoard(array,location,user1Symbol);
-                if(ifWin == true){
-                    System.out.println("The winner is "+ user1Symbol);
-                    break;
-                }
-            }else{
-                ifWin = placeSymbolOnBoard(array,location,user2Symbol);
-                if(ifWin == true){
-                    System.out.println("The winner is "+ user2Symbol);
-                    break;
-                }
-            }
-        }
-    }
-    public static char[] printBoard(char[] array){
-        for (int i = 1; i <= 9; i += 3) {
-            for (int j = i; j <= i+2; j++) {
-                array[j] = placeSymbolOnBoard();
-                System.out.print(j+" ");
-            }
-            System.out.println(" ");
-        }
-        return array;
-    }
-    public static boolean isAvailable(char[] array, int location){
-        boolean ifAlreadyChosen = true;
-        if (array[location] == 'X' || array[location] == 'O'){
-            ifAlreadyChosen = false;
-        }
-        return ifAlreadyChosen;
-    }
-    public static int getPositionFromUser(char[] array) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner =  new Scanner(System.in);
         int location;
-        do {
-            System.out.println("Please enter a number between 1 to 9");
+        char symbol = 'X';
+        char[] array= {'1','2','3','4','5','6','7','8','9'};
+        printBoard(array);
+        for (int i = 0; i < 9; i++) {
+            System.out.println("Please enter the number of the location you want to choose(not X or O): ");
             location = scanner.nextInt();
-        }while (location < 1 || location > 9);
-        boolean ifAlreadyTaken = isAvailable(array,location);
-        if(ifAlreadyTaken == false) {
-            do {
-                System.out.println("Please enter another number between 1 to 9, except of " + location);
-                location = scanner.nextInt();
-                ifAlreadyTaken = isAvailable(array, location);
-            } while (ifAlreadyTaken == false);
+            location = getPositionFromUser(array,location);
+            array[location -1] = symbol;
+            printBoard(array);
+            placeSymbolOnBoard(array,location,symbol);
+            boolean returnNewBoard  = placeSymbolOnBoard(array,location,symbol);
+            if(returnNewBoard){
+                break;
+            }
+            if(i % 2 == 0){
+                symbol = 'O';
+            }else{
+                symbol = 'X';
+            }
+        }
+        if(checkWinner(array) == '-'){
+            System.out.println("There is no Winner");
+        }else{
+            System.out.println(checkWinner(array) +" is the Winner");
+        }
+    }
+    public static void printBoard(char [] array){
+        for (int i = 0; i < 9; i++) {
+            System.out.print(array[i]+ " ");
+            if(i == 2 || i == 5){
+                System.out.println("");
+            }
+        }
+    }
+    public static boolean isAvailable(char[] array,int location){
+        boolean isPlaceAlreadychosen = true;
+        if(array[location] == 'X' || array[location] =='O'){
+            isPlaceAlreadychosen = false;
+        }
+        return isPlaceAlreadychosen;
+    }
+    public static int getPositionFromUser(char[] array,int location){
+        Scanner scanner = new Scanner(System.in);
+        while(location < 1 || location > 9 || array[location - 1] == 'X' || array[location - 1] == 'O'){
+            System.out.println("Please enter the location you want to choose(1-9 and not a place which is already X or O): ");
+            location = scanner.nextInt();
         }
         return location;
     }
     public static char checkWinner(char[] array){
-        char ifWinner = '-';
-        int counter1 = 0;
-        int counter2 = 0;
-        for (int i = 1; i <= 3; i++) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
+        char winner = '-';
+        if((array[0] == 'X' && array[1]== 'X' && array[2] =='X') ||
+                (array[3] == 'X' && array[4]== 'X' && array[5] =='X')||
+                (array[6] == 'X' && array[7]== 'X' && array[8] =='X')||
+                (array[0] == 'X' && array[3]== 'X' && array[6] =='X')||
+                (array[1] == 'X' && array[4]== 'X' && array[7] =='X')||
+                (array[2] == 'X' && array[5]== 'X' && array[8] =='X')||
+                (array[0] == 'X' && array[4]== 'X' && array[8] =='X')||
+                (array[2] == 'X' && array[4]== 'X' && array[6] =='X')){
+            winner = 'X';
+        }else if((array[0] == 'O' && array[1]== 'O' && array[2] =='O') ||
+                (array[3] == 'O' && array[4]== 'O' && array[5] =='O')||
+                (array[6] == 'O' && array[7]== 'O' && array[8] =='O')||
+                (array[0] == 'O' && array[3]== 'O' && array[6] =='O')||
+                (array[1] == 'O' && array[4]== 'O' && array[7] =='O')||
+                (array[2] == 'O' && array[5]== 'O' && array[8] =='O')||
+                (array[0] == 'O' && array[4]== 'O' && array[8] =='O')||
+                (array[2] == 'O' && array[4]== 'O' && array[6] =='O')) {
+            winner = 'O';
         }
-        for (int i = 4; i <= 6; i++) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 7; i <= 9; i++) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i+=3) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i+=3) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 2; i <= 8; i+=3) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 3; i <= 9; i+=3) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 3; i < 7; i+=2) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 0; i <= 9; i+=4) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 3; i <= 7; i+=2) {
-            if(array[i] == 'X'){
-                counter1++;
-            }else{
-                counter1 = 0;
-                break;
-            }
-        }
-        for (int i = 1; i <= 3; i++) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 4; i <= 6; i++) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 7; i <= 9; i++) {
-            if (array[i] == 'O') {
-                counter2++;
-            } else {
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i+=3) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i+=3) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 2; i <= 8; i+=3) {
-            if (array[i] == 'O') {
-                counter2++;
-            } else {
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 3; i <= 9; i+=3) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 3; i < 7; i+=2) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        for (int i = 0; i <= 9; i+=4) {
-            if(array[i] == 'O'){
-                counter2++;
-            }else{
-                counter2 = 0;
-                break;
-            }
-        }
-        if(counter2 >= 3){
-            ifWinner = 'O';
-        }else if(counter1 >= 3){
-            ifWinner = 'X';
-        }
-        return ifWinner;
+        return winner;
     }
-    public static boolean placeSymbolOnBoard(char[] array, int location, char symbol){
-        char ifSomeoneWin;
-        getPositionFromUser(array,location);
-        if(symbol == 'X'){
-            array[location] = symbol;
-            for (int i = 1; i <= 3; i ++) {
-                for (int j = i; j <= i+2; j++) {
-                    if (array[location] == i) {
-                        System.out.print(symbol);
-                    } else {
-                        System.out.print(j + " ");
-                    }
-                }
-                System.out.println("");
-            }
-        }else{
-            array[location] = symbol;
-            for (int i = 1; i <= 9; i+=3) {
-                for (int j = i; j <= i+2; j++) {
-                    if(array[location] == j){
-                        System.out.print(symbol);
-                    }else {
-                        System.out.print(array[i] + " ");
-                    }
-                }
-                System.out.println("");
-            }
+    public static boolean placeSymbolOnBoard(char[] array, int location, char symbol) {
+        boolean isWinner = false;
+        array[location - 1] = symbol;
+        char isThereWinner = checkWinner(array);
+        if (isThereWinner == 'X' || isThereWinner == 'O') {
+            isWinner = true;
         }
-        ifSomeoneWin = checkWinner(array);
-        boolean finalCheck = false;
-        if(ifSomeoneWin == 'O'){
-            finalCheck = true;
-        }else if(ifSomeoneWin == 'X'){
-            finalCheck = true;
-        }
-        return finalCheck;
+        return isWinner;
     }
-}*/
+}

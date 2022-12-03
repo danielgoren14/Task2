@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad4d22ab-ab73-446e-826e-6ceef0ae6796" name="Changes" comment="Initial commit" />
+    <list default="true" id="ad4d22ab-ab73-446e-826e-6ceef0ae6796" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercise2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercise4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercise5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercise6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercise7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercise7.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,15 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,8 +64,44 @@
       <workItem from="1669488067590" duration="11004000" />
       <workItem from="1669536874592" duration="15361000" />
       <workItem from="1669565908393" duration="5611000" />
-      <workItem from="1669572530402" duration="389000" />
+      <workItem from="1669572530402" duration="609000" />
+      <workItem from="1669575016657" duration="774000" />
+      <workItem from="1669577171127" duration="597000" />
+      <workItem from="1669583059320" duration="3252000" />
+      <workItem from="1669719302909" duration="8918000" />
+      <workItem from="1669731167142" duration="4082000" />
+      <workItem from="1669735423749" duration="173000" />
+      <workItem from="1669756265220" duration="3594000" />
+      <workItem from="1669760254109" duration="193000" />
+      <workItem from="1669844042819" duration="4131000" />
+      <workItem from="1669885848297" duration="7453000" />
+      <workItem from="1669961861636" duration="840000" />
+      <workItem from="1669991864640" duration="2710000" />
+      <workItem from="1670020388147" duration="3946000" />
+      <workItem from="1670068925748" duration="2985000" />
     </task>
+    <task id="LOCAL‎-00001" summary="Initial commit">
+      <created>1669572959791</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL‎-00001" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1669572959791</updated>
+    </task>
+    <task id="LOCAL‎-00002" summary="Initial commit">
+      <created>1669719780912</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1669719780912</updated>
+    </task>
+    <task id="LOCAL‎-00003" summary="Initial commit">
+      <created>1669735465202</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL‎-00003" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1669735465202</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,54 +118,42 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Exercise2.java</url>
-          <line>11</line>
+          <line>10</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Exercise2.java</url>
-          <line>12</line>
+          <line>11</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Exercise2.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Exercise2.java</url>
-          <line>26</line>
+          <line>23</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Exercise3.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="29" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
