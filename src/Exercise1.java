@@ -1,9 +1,5 @@
 import java.util.Scanner;
-
 public class Exercise1 {
-    public static void main(String[] args) {
-        printBiggestNumbersThanTheAverage();
-    }
     public static void printBiggestNumbersThanTheAverage(){
         Scanner scanner = new Scanner(System.in);
         int[] array = new int[10];
@@ -19,7 +15,5 @@ public class Exercise1 {
                 System.out.println(array[i]);
             }
         }
-
     }
-
 }

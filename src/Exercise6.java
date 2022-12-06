@@ -1,26 +1,23 @@
-import com.sun.nio.sctp.AbstractNotificationHandler;
-
 import java.util.Scanner;
-
 public class Exercise6 {
-    /*public static void main(String[] args) {
+    public static void main(String[]args){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter a valid quadratic equation (ax^2+bx+x=0): ");
-        String quadraticEquation = scanner.nextLine();
-        boolean ifValid = valid(quadraticEquation);
-        int a,b,c;
-        if(ifValid == true){
-            a = parameterA(quadraticEquation);
-            b = parameterB(quadraticEquation,a);
-            c = parameterC(quadraticEquation,a,b);
-            printResult(a,b,c);
-        }else{
-            System.out.println("you entered wrong");
+        System.out.println("enter the equation");
+        String equation = scanner.nextLine();
+        boolean checkEquation = checkEquation(equation);
+        if(checkEquation == false){
+            System.out.println("the equation is not good");
+        }
+        else{
+            int a = returnTheParameterA(equation);
+            int b = returnTheParameterB(equation);
+            int c = returnTheParameterC(equation);
+            solutionsOfTheEquation(a,b,c);
         }
     }
     public static boolean checkEquation(String equation){
         boolean goodOrNot = true;
-        if(equation.length() == 0){
+        if(equation.length() == 0 || equation.length() == 1){
             goodOrNot = false;
         }
         else {
@@ -45,33 +42,115 @@ public class Exercise6 {
                     }
                 }
             }
+            int checkEqualsSigns = 0;
+            int checkPlusAndMinus = 0;
+            for(int i = indexOfFirstX + 2;i<indexOfSecondX;i++){
+                if(equation.charAt(i) == '+' || equation.charAt(i) == '-'){
+                    checkPlusAndMinus++;
+                }
+            }
+            for (int i = 0; i < equation.length(); i++) {
+                if(equation.charAt(i) == '='){
+                    checkEqualsSigns++;
+                }
+            }
             if (!equation.substring(lengthOfEquation - 2).equals(equalToZero)) {
                 goodOrNot = false;
             } else if (!equation.substring(indexOfFirstX, indexOfFirstX + 3).equals(fromFirstX)) {
                 goodOrNot = false;
             } else if (!(equation.substring(indexOfSecondX, indexOfSecondX + 2).equals(secondXWithPlus) ||
-            equation.substring(indexOfSecondX, indexOfSecondX + 2).equals(secondXWithMinus) ||
-            equation.substring(indexOfSecondX, indexOfSecondX + 2).equals(secondXWithEqual))) {
+                    equation.substring(indexOfSecondX, indexOfSecondX + 2).equals(secondXWithMinus) ||
+                    equation.substring(indexOfSecondX, indexOfSecondX + 2).equals(secondXWithEqual))) {
                 goodOrNot = false;
+            }
+            else if(checkPlusAndMinus > 1 || checkEqualsSigns > 1){
+                goodOrNot = false;
+            }
+            else if(indexOfFirstX > 2){
+                if(equation.charAt( indexOfFirstX - 1) == '+' || equation.charAt( indexOfFirstX - 1) == '-'){
+                    goodOrNot = false;
+                }
             }
         }
         return goodOrNot;
     }
-    /*public static boolean valid(String equation){
-        boolean equationIsValid = false;
-        if(equation.contains("x^2") && equation.contains("x") && equation.contains("=0")){
-            equationIsValid = true;
+    public static int returnTheParameterA(String equation){
+        int a = 0;
+        int indexOfFirstX = equation.indexOf('x');
+        String beforFirstX = equation.substring(0,indexOfFirstX);
+        char firstCharAtEquation = equation.charAt(0);
+        if(indexOfFirstX == 0)
+            a = 1;
+        else if(firstCharAtEquation == '-' && indexOfFirstX == 1){
+            a = -1;
+        }else if(firstCharAtEquation == '+' && indexOfFirstX == 1){
+            a = 1;
         }
-        return equationIsValid;
+        else if(firstCharAtEquation == '-' && indexOfFirstX != 1){
+            String str =equation.substring(0,indexOfFirstX);
+            a = (Integer.parseInt(str));
+        }
+        else{
+            a = Integer.parseInt(beforFirstX);
+        }
+        return a;
     }
-    public static int parameterA(String equation){
-
+    public static int returnTheParameterB(String equation){
+        int b = 0;
+        int indexOfFirstX = equation.indexOf('x');
+        String newEquation = equation.substring(indexOfFirstX+3);
+        int indexOfSecondX = newEquation.indexOf('x');
+        newEquation = newEquation.substring(0,indexOfSecondX);
+        if(newEquation.length() == 1) {
+            if (newEquation.charAt(0) == '+') {
+                b = 1;
+            }
+            else{
+                b = -1;
+            }
+        }
+        else if(newEquation.charAt(0)== '-'){
+            newEquation = newEquation.substring(1);
+            b = -1 * Integer.parseInt(newEquation);
+        }
+        else{
+            b = Integer.parseInt(newEquation);
+        }
+        return b;
     }
-    public static int parameterB(String equation){
-        int b = 1;
-        String stringOfA;
-        int whereToCutFrom = 0;
-
-    }*/
-
+    public static int returnTheParameterC(String equation) {
+        int c = 0;
+        int indexOfFirstX = equation.indexOf('x');
+        String newEquation = equation.substring(indexOfFirstX+3);
+        int indexOfSecondX = newEquation.indexOf('x');
+        int indexOfEqual = newEquation.indexOf('=');
+        newEquation = newEquation.substring(indexOfSecondX + 1,indexOfEqual);
+        if(newEquation.length()==0){
+            c = 0;
+        }
+        else if(newEquation.charAt(0) == '-'){
+            newEquation = newEquation.substring(1);
+            c = -1 * Integer.parseInt(newEquation);
+        }
+        else {
+            c = Integer.parseInt(newEquation);
+        }
+        return c;
+    }
+    public static void solutionsOfTheEquation(int a, int b,int c){
+        double x1,x2;
+        int sum = (b*b)-(4*a*c);
+        if(sum<0){
+            System.out.println("there is no solution");
+        }
+        else if(sum == 0){
+            x1=-b/(a*2);
+            System.out.println("x1 = "+x1);
+        }
+        else{
+            x1 = (-b + Math.sqrt(sum))/(a*2);
+            x2 = (-b - Math.sqrt(sum))/(a*2);
+            System.out.println("x1 = "+x1+ " , x2 = "+x2);
+        }
+    }
 }

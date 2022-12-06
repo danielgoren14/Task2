@@ -1,17 +1,4 @@
-import java.util.Scanner;
 public class Exercise3 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int [] array = new int[6];
-        System.out.println("Please enter 6 numbers");
-        for (int i = 0; i < array.length; i++) {
-            array[i] = scanner.nextInt();
-        }
-        int[] newArray = printWithoutDuplications(array);
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.print(newArray[i]+ " ");
-        }
-    }
     public static int[] printWithoutDuplications(int[] array){
         int counter =0;
         for (int i = 0; i < array.length - 1; i++) {

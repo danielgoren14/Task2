@@ -1,88 +1,105 @@
 import java.util.Scanner;
-
 public class Exercise5 {
-    public static void main(String[] args) {
-        Scanner scanner =  new Scanner(System.in);
-        int location;
-        char symbol = 'X';
-        char[] array= {'1','2','3','4','5','6','7','8','9'};
-        printBoard(array);
-        for (int i = 0; i < 9; i++) {
-            System.out.println("Please enter the number of the location you want to choose(not X or O): ");
-            location = scanner.nextInt();
-            location = getPositionFromUser(array,location);
-            array[location -1] = symbol;
-            printBoard(array);
-            placeSymbolOnBoard(array,location,symbol);
-            boolean returnNewBoard  = placeSymbolOnBoard(array,location,symbol);
-            if(returnNewBoard){
+    public static void main(String[]args){
+        char [] board = {'1','2','3','4','5','6','7','8','9'};
+        char player1 = 'x';
+        char player2 = 'o';
+        char playerTurn = 'x';
+        boolean somoneWin = false;
+        int indexToPut;
+        int counter = 0;
+        printBoard(board);
+        do{
+            if(counter == 9){
                 break;
             }
-            if(i % 2 == 0){
-                symbol = 'O';
-            }else{
-                symbol = 'X';
+            indexToPut =getPosionFromUser(board);
+            somoneWin = placeSymbolOnBoard(board,indexToPut,playerTurn);
+            if(playerTurn == player1){
+                playerTurn = player2;
+            }
+            else{
+                playerTurn = player1;
+            }
+            counter++;
+        }while(!somoneWin);
+        if(somoneWin == false){
+            System.out.println("its a dro");
+        }
+    }
+    public static void printBoard(char []board){
+        for(int i = 0;i < board.length;i++){
+            System.out.print(board[i]+"\t");
+            if(i==2 || i ==5 || i==8){
+                System.out.println();
             }
         }
-        if(checkWinner(array) == '-'){
-            System.out.println("There is no Winner");
-        }else{
-            System.out.println(checkWinner(array) +" is the Winner");
-        }
     }
-    public static void printBoard(char [] array){
-        for (int i = 0; i < 9; i++) {
-            System.out.print(array[i]+ " ");
-            if(i == 2 || i == 5){
-                System.out.println("");
+    public static boolean isAvailable(char[]board, int indexOnBoard){
+        boolean freeOrNot = true;
+        if(board[indexOnBoard] == 'x' || board[indexOnBoard] == 'o'){
+            freeOrNot = false;
+        }
+        return freeOrNot;
+    }
+    public static int getPosionFromUser(char []board){
+        Scanner scan = new Scanner(System.in);
+        int index;
+        boolean situationOfIndex = false;
+        System.out.println("enter the index from 1 to 9");
+        do{
+            index = scan.nextInt();
+            index -= 1;
+            if(index < 9 && index >=0 ) {
+                situationOfIndex = isAvailable(board, index);
+                if(situationOfIndex == false){
+                    System.out.println("this position already token");
+                }
+            }
+            else{
+                System.out.println("try again (only 1-9)");
+            }
+        }while(situationOfIndex == false);
+        return index;
+    }
+    public static char checkWinner(char board[]){
+        char win = '-';
+        for(int i = 0 ; i<board.length ;i+=3){
+            if(board[i] == board[i+1] && board[i]==board[i+2]){
+                if(board[i] == 'x' || board[i] == 'o') {
+                    win = board[i];
+                }
             }
         }
-    }
-    public static boolean isAvailable(char[] array,int location){
-        boolean isPlaceAlreadychosen = true;
-        if(array[location] == 'X' || array[location] =='O'){
-            isPlaceAlreadychosen = false;
+        for(int i = 0;i< 3 ;i++){
+            if(board[i] == board[i+3] && board[i] == board[i+6]){
+                if(board[i] == 'x' || board[i] == 'o') {
+                    win = board[i];
+                }
+            }
         }
-        return isPlaceAlreadychosen;
-    }
-    public static int getPositionFromUser(char[] array,int location){
-        Scanner scanner = new Scanner(System.in);
-        while(location < 1 || location > 9 || array[location - 1] == 'X' || array[location - 1] == 'O'){
-            System.out.println("Please enter the location you want to choose(1-9 and not a place which is already X or O): ");
-            location = scanner.nextInt();
+        if(board[0] == board[4] && board[4] == board[8]){
+            if(board[4] == 'x' || board[4] == 'o') {
+                win = board[0];
+            }
         }
-        return location;
-    }
-    public static char checkWinner(char[] array){
-        char winner = '-';
-        if((array[0] == 'X' && array[1]== 'X' && array[2] =='X') ||
-                (array[3] == 'X' && array[4]== 'X' && array[5] =='X')||
-                (array[6] == 'X' && array[7]== 'X' && array[8] =='X')||
-                (array[0] == 'X' && array[3]== 'X' && array[6] =='X')||
-                (array[1] == 'X' && array[4]== 'X' && array[7] =='X')||
-                (array[2] == 'X' && array[5]== 'X' && array[8] =='X')||
-                (array[0] == 'X' && array[4]== 'X' && array[8] =='X')||
-                (array[2] == 'X' && array[4]== 'X' && array[6] =='X')){
-            winner = 'X';
-        }else if((array[0] == 'O' && array[1]== 'O' && array[2] =='O') ||
-                (array[3] == 'O' && array[4]== 'O' && array[5] =='O')||
-                (array[6] == 'O' && array[7]== 'O' && array[8] =='O')||
-                (array[0] == 'O' && array[3]== 'O' && array[6] =='O')||
-                (array[1] == 'O' && array[4]== 'O' && array[7] =='O')||
-                (array[2] == 'O' && array[5]== 'O' && array[8] =='O')||
-                (array[0] == 'O' && array[4]== 'O' && array[8] =='O')||
-                (array[2] == 'O' && array[4]== 'O' && array[6] =='O')) {
-            winner = 'O';
+        if (board[2] == board[4] && board[4] == board[6]){
+            if(board[4] == 'x' || board[4] == 'o') {
+                win = board[2];
+            }
         }
-        return winner;
+        return win;
     }
-    public static boolean placeSymbolOnBoard(char[] array, int location, char symbol) {
-        boolean isWinner = false;
-        array[location - 1] = symbol;
-        char isThereWinner = checkWinner(array);
-        if (isThereWinner == 'X' || isThereWinner == 'O') {
-            isWinner = true;
+    public static boolean placeSymbolOnBoard(char []board , int index , char player){
+        boolean win = false;
+        char check = '-';
+        board[index]=player;
+        printBoard(board);
+        check = checkWinner(board);
+        if (check == player){
+            System.out.print("player "+ player + " win");
+            win = true;
         }
-        return isWinner;
+        return win;
     }
 }
